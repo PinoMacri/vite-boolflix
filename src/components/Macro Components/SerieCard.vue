@@ -20,8 +20,8 @@ export default {
             <img :src="`https://image.tmdb.org/t/p/w342/${cards.poster_path}`" alt="">
         </li>
         <li v-else class="text-center alternativeImgCard">
-            <h3>{{ cards.title }}</h3>
-            <p>Nessun immagine disponibile per questo Film</p>
+            <h3>{{ cards.title || cards.name }}</h3>
+            <p class="mt-5 pt-5 h2 text-danger">Nessun immagine disponibile per questo Film</p>
         </li>
 
         <li class="info text-center p-3">
