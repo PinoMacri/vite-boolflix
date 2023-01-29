@@ -7,7 +7,7 @@ export default {
         return {
             store: store
         }
-    }, props: { product: Object }
+    }, props: { product: Object },
 
 }
 </script>
