@@ -19,6 +19,14 @@ export default {
 <template>
 
     <div class="main-container">
+
+        <div v-if="store.isLoading" class="text-center pt-5">
+            <img class="loading" src="../../../public/netflix_318-566093.webp" alt="">
+            <p class="mt-5">Loading . . .</p>
+        </div>
+
+
+
         <h2 v-if="store.films.length > 1">Film</h2>
         <div class="film d-flex flex-wrap justify-content-between">
             <film-card v-for="film in store.films" :product="film" :key="film.id"></film-card>
@@ -32,7 +40,32 @@ export default {
 
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
+img.loading {
+    width: 200px;
+    height: 200px;
+    animation-name: ruota;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+p.mt-5 {
+
+    font-weight: bold;
+
+}
+
+@keyframes ruota {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .main-container {
     max-width: 1500px;
     margin: 0 auto;

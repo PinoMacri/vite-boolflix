@@ -11,15 +11,18 @@ export default {
     },
     methods: {
         searchFilms_Series() {
-
+            store.isLoading = true;
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=685fa3464d3738594db73af80451d877&query=${this.search}`)
                 .then((response) => {
                     store.films = response.data.results
+                }).catch(error => { console.log(error) })
+                .then(() => {
+                    store.isLoading = false;
+                });
+            axios.get(`https://api.themoviedb.org/3/search/tv?api_key=685fa3464d3738594db73af80451d877&query=${this.search}`)
+                .then((response) => {
+                    store.series = response.data.results
                 }),
-                axios.get(`https://api.themoviedb.org/3/search/tv?api_key=685fa3464d3738594db73af80451d877&query=${this.search}`)
-                    .then((response) => {
-                        store.series = response.data.results
-                    }),
                 this.search = ""
         }, ricarica() {
             location.reload()
